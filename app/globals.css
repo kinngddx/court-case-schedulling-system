@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+@layer components {
+  .input {
+    @apply border border-gray-300 rounded px-3 py-2 w-full;
+  }
+  .btn {
+    @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50;
+  }
+}
+
+
+
+ 
