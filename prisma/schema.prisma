@@ -25,6 +25,7 @@ model Judge {
   name            String
   expertise       String[]
   maxCasesPerDay  Int       @default(5)
+  isAvailable     Boolean   @default(true)
   
   hearings        Hearing[]
 }
