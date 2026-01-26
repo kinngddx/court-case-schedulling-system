@@ -11,6 +11,9 @@ const prisma = new PrismaClient();
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+
+    
     
     // Calculate case age
     const filedDate = new Date(body.filedDate);
