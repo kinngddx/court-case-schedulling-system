@@ -1,10 +1,11 @@
 import Analytics from '../components/Analytics';
-// import SimulationPanel from '../components/SimulationPanel';
 import SimulationPanel from '../components/Simulationpanel';
 import JudgeWorkload from '../components/JudgeWorkload';
 import JudgeTimeline from '../components/JudgeTimeline'; 
 
 export default function Dashboard() {
+
+  
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-8">
       {/* 1. Header Section */}
@@ -15,29 +16,26 @@ export default function Dashboard() {
         </div>
       </div>
 
-  
+     
       <section>
         <Analytics />
       </section>
 
-      
+    
       <section>
         <SimulationPanel />
       </section>
 
-      
+      {/* 4. Visualizations */}
       <div className="grid grid-cols-1 gap-8">
-    
-
-
-        <div className="bg-white p-6 rounded border shadow-sm">
+        <div className="bg-white p-6 rounded border shadow-sm min-h-[300px]">
           <h2 className="text-lg font-bold mb-4 text-slate-700">Judge Resource Allocation</h2>
           <JudgeWorkload />
         </div>
 
-        
-        <div className="bg-white p-6 rounded border shadow-sm">
+        <div className="bg-white p-6 rounded border shadow-sm min-h-[400px]">
           <h2 className="text-lg font-bold mb-4 text-slate-700">Hearing Timeline (Next 5 Days)</h2>
+          
           <JudgeTimeline />
         </div>
       </div>

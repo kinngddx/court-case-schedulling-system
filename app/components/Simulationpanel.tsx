@@ -5,7 +5,6 @@ export default function SimulationPanel() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  // 1. Run Algorithm
   const handleSchedule = async () => {
     setLoading(true);
     setMessage("Running AI Scheduling Algorithm...");
@@ -13,7 +12,7 @@ export default function SimulationPanel() {
       const res = await fetch("/api/schedule", { method: "POST" });
       const data = await res.json();
       setMessage(`Success: ${data.count || 0} cases scheduled!`);
-      setTimeout(() => window.location.reload(), 1500); // Reload to show updates
+      setTimeout(() => window.location.reload(), 1500);
     } catch (err) {
       setMessage("Failed to run scheduler.");
     } finally {
@@ -21,7 +20,6 @@ export default function SimulationPanel() {
     }
   };
 
-  // 2. Reset Everything
   const handleReset = async () => {
     if (!confirm("Are you sure? This will clear all hearings.")) return;
     setLoading(true);
@@ -49,23 +47,25 @@ export default function SimulationPanel() {
           <button
             onClick={handleReset}
             disabled={loading}
-            className="px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50 font-medium disabled:opacity-50"
+            className="px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50 font-medium disabled:opacity-50 flex items-center gap-2"
           >
+            {loading && <div className="w-3 h-3 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>}
             Reset All
           </button>
           
           <button
             onClick={handleSchedule}
             disabled={loading}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-medium disabled:opacity-50"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center gap-2"
           >
+            {loading && <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></div>}
             {loading ? "Processing..." : "Run Auto-Scheduler"}
           </button>
         </div>
       </div>
 
       {message && (
-        <div className="mt-4 p-2 bg-blue-50 text-blue-700 text-sm rounded border border-blue-100 text-center font-medium">
+        <div className="mt-4 p-2 bg-blue-50 text-blue-700 text-sm rounded border border-blue-100 text-center font-medium animate-pulse">
           {message}
         </div>
       )}
