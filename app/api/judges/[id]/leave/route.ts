@@ -5,9 +5,12 @@ const prisma = new PrismaClient();
 
 export async function POST(
   req: Request, 
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const judgeId = params.id;
+  const { id: judgeId } = await params;    //yeh fix kiya gya hai bcz new nextjs me await  krna parta hai
+  
+
+
 
   try {
     await prisma.$transaction(async (tx) => {

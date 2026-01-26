@@ -1,4 +1,4 @@
-import CaseForm from '../components/Case-form';
+import CaseForm from '../components/Case-Form';
 
 export default function SubmitCasePage() {
   return (

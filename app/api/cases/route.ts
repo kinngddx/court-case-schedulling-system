@@ -39,32 +39,16 @@ export async function POST(request: Request) {
 }
 
 
-
-// ```
-
-// ---
-
-// ## Test:
-
-// **Create judge:**
-// ```
-// // POST http://localhost:3000/api/judges
-// {
-//   "name": "Justice Sharma",
-//   "expertise": ["Criminal", "Civil"],
-//   "maxCasesPerDay": 5
-// }
+export async function GET() {
+  try {
+    const cases = await prisma.case.findMany({
+      orderBy: { priorityScore: 'desc' }
+    });
+    return NextResponse.json(cases);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to fetch cases' }, { status: 500 });
+  }
+}
 
 
-// // **Create case with priority:**
-// ```
-// // POST http://localhost:3000/api/cases
-// {
-//   "caseNumber": "CASE002",
-//   "caseType": "Criminal",
-//   "filedDate": "2024-06-15",
-//   "description": "Assault case",
-//   "crimeSeverity": 4,
-//   "isUndertrial": true,
-//   "isVictimVulnerable": false
-// }
+

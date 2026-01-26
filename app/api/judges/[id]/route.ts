@@ -28,20 +28,26 @@ export async function PUT(
   }
 }
 
-// DELETE - Remove Judge
 export async function DELETE(
   req: Request,
-  { params }: { params: Promise<{ id: string }> } // Change to Promise
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params; // Unwrap params
+    const { id } = await params;
     
+    // Delete hearings first
+    await prisma.hearing.deleteMany({
+      where: { judgeId: id }
+    });
+    
+    // Then delete judge
     await prisma.judge.delete({
       where: { id: id }
     });
     
     return NextResponse.json({ message: 'Judge deleted' });
   } catch (error) {
+    console.error(error); // Check terminal for exact error
     return NextResponse.json({ error: "Delete failed" }, { status: 500 });
   }
 }
