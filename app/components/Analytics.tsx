@@ -28,7 +28,9 @@ export default function Analytics() {
     ? (cases.reduce((sum, c) => sum + c.priorityScore, 0) / total).toFixed(1) 
     : 0;
 
-  // 2. Data for PieChart (Cases by Type)
+ 
+
+
   const typeData = [
     { name: "Criminal", value: cases.filter((c) => c.caseType === "Criminal").length },
     { name: "Civil", value: cases.filter((c) => c.caseType === "Civil").length },
@@ -37,7 +39,9 @@ export default function Analytics() {
 
   return (
     <div className="space-y-6">
-      {/* Stats Grid */}
+     
+
+     {/* //stats grid hai */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <StatCard title="Total Cases" value={total} color="text-blue-600" />
         <StatCard title="Pending" value={pending} color="text-amber-600" />
@@ -45,7 +49,10 @@ export default function Analytics() {
 <StatCard title="Avg Priority" value={`${avgPriority}%`} color="text-rose-600" />      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl border shadow-sm">
-        {/* Pie Chart Section */}
+  
+
+
+  {/* pie charts yaha se */}
         <div className="h-64">
           <h3 className="text-sm font-bold text-slate-500 mb-4 uppercase">Case Distribution</h3>
           <ResponsiveContainer width="100%" height="100%">
@@ -67,7 +74,7 @@ export default function Analytics() {
           </ResponsiveContainer>
         </div>
 
-        {/* Priority Analysis (Optional extra) */}
+      
         <div className="flex flex-col justify-center space-y-2">
           <h3 className="text-sm font-bold text-slate-500 uppercase">System Efficiency</h3>
           <p className="text-xs text-slate-500">
@@ -87,6 +94,9 @@ export default function Analytics() {
     </div>
   );
 }
+
+
+
 
 function StatCard({ title, value, color }: { title: string; value: string | number; color: string }) {
   return (

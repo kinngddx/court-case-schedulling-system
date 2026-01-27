@@ -8,7 +8,8 @@ export default function Dashboard() {
   
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-8">
-      {/* 1. Header Section */}
+      {/* {/ Header Section */} */
+
       <div className="flex justify-between items-center border-b pb-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-800">System Command Center</h1>
@@ -26,7 +27,8 @@ export default function Dashboard() {
         <SimulationPanel />
       </section>
 
-      {/* 4. Visualizations */}
+     
+     
       <div className="grid grid-cols-1 gap-8">
         <div className="bg-white p-6 rounded border shadow-sm min-h-[300px]">
           <h2 className="text-lg font-bold mb-4 text-slate-700">Judge Resource Allocation</h2>

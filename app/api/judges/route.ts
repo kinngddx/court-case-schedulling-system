@@ -14,7 +14,7 @@ export async function GET() {
     }
   });
   
-  // Calculate workload
+  // Calculate workload kiya hu
   const judgesWithWorkload = judges.map(judge => ({
     ...judge,
     currentWorkload: judge.hearings.length,
@@ -24,9 +24,13 @@ export async function GET() {
   return NextResponse.json(judgesWithWorkload);
 }
 
+
+
 export async function POST(request: Request) {
   const body = await request.json();
   
+
+  //new judge dalne ke liye hai 
   const newJudge = await prisma.judge.create({
     data: {
       name: body.name,

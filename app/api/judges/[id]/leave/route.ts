@@ -37,7 +37,7 @@ export async function POST(
         include: { case: true }
       });
 
-      // 2. Get case IDs
+    
       const caseIds = hearings.map(h => h.caseId);
 
 
@@ -52,7 +52,7 @@ export async function POST(
         }
       });
 
-      // 4. Update cases back to Pending
+      // cases ko pending kr do
       await tx.case.updateMany({
         where: { id: { in: caseIds } },
         data: { status: 'Pending' }

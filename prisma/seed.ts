@@ -4,6 +4,8 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Create Judges
+
+
   const judges = await Promise.all([
     prisma.judge.create({
       data: { name: 'Justice Sharma', expertise: ['Criminal', 'Civil'], maxCasesPerDay: 5 }
@@ -16,13 +18,14 @@ async function main() {
     }),
   ]);
 
-  // Create Courts
+  // Create Courts  
+
   const courts = await Promise.all([
     prisma.court.create({ data: { name: 'Court 1', location: 'Delhi', capacity: 1 } }),
     prisma.court.create({ data: { name: 'Court 2', location: 'Mumbai', capacity: 1 } }),
   ]);
 
-  // Create Cases
+  // cases create kiay jate
   const caseTypes = ['Criminal', 'Civil', 'Family'];
   for (let i = 1; i <= 50; i++) {
     await prisma.case.create({

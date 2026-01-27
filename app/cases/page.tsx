@@ -17,6 +17,8 @@ export default function CasesPage() {
       .catch(() => setLoading(false));
   }, []);
 
+
+  //priority status diya according to the scores
   const getPriorityStyles = (score: number) => {
     if (score > 70) return "bg-red-100 text-red-700 border-red-200";
     if (score > 40) return "bg-yellow-100 text-yellow-700 border-yellow-200";
