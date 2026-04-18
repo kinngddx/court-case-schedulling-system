@@ -22,12 +22,6 @@ export async function POST(
 });
 
 
-            
-
-
-
-
-
       // 1. Find all scheduled hearings for this judge
       const hearings = await tx.hearing.findMany({
         where: {
